@@ -1,0 +1,13 @@
+li{
+    padding: 25px;
+    border: 2px solid black;
+}
+
+
+.azul{
+    background-color: rgb(226, 126, 112);
+}
+
+.verde{
+    background-color: rgb(211, 176, 231);
+}

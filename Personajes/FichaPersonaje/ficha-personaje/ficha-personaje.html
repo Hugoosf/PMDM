@@ -1,0 +1,18 @@
+<li [ngClass]="{'azul': personaje.raza == 'humano', 'verde': personaje.raza == 'extraterrestre'}">
+  <strong>Personaje: </strong> {{personaje.nombre}}, <strong>Raza: </strong> {{personaje.raza}},
+
+
+  <span>
+    <strong>Poder: </strong>
+    @for (_ of getPoderArray(personaje.poder); track _) {
+      <img 
+        src="/estrella.png" 
+        alt="Poder" 
+        width="45"
+      />
+    }
+  </span>
+
+</li>
+
+
