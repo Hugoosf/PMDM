@@ -1,0 +1,61 @@
+<form [formGroup]="halloweenForm" (ngSubmit)="onSubmit()" novalidate>
+  <div class="form-group" [ngClass]="{'error': enviado && f['nombre'].invalid}">
+    <label for="nombre">Nombre:</label>
+    <input id="nombre" type="text" formControlName="nombre" />
+    <div class="mensaje-error" *ngIf="enviado && f['nombre'].invalid">
+      👻 Este campo da más miedo vacío, ¡rellénalo!
+    </div>
+  </div>
+
+  <div class="form-group" [ngClass]="{'error': enviado && f['email'].invalid}">
+    <label for="email">Email:</label>
+    <input id="email" type="email" formControlName="email" />
+    <div class="mensaje-error" *ngIf="enviado && f['email'].errors?.['required']">
+      👻 Este campo da más miedo vacío, ¡rellénalo!
+    </div>
+    <div class="mensaje-error" *ngIf="enviado && f['email'].errors?.['email']">
+      🩸 Ese correo parece maldito… revisa el formato.
+    </div>
+  </div>
+
+  <div class="form-group" [ngClass]="{'error': enviado && f['tipoInvitado'].invalid}">
+    <label for="tipoInvitado">Tipo de invitado:</label>
+    <select id="tipoInvitado" formControlName="tipoInvitado">
+      <option value="">-- Selecciona --</option>
+      <option *ngFor="let tipo of tiposInvitado" [value]="tipo">{{ tipo }}</option>
+    </select>
+    <div class="mensaje-error" *ngIf="enviado && f['tipoInvitado'].invalid">
+      👻 Este campo da más miedo vacío, ¡rellénalo!
+    </div>
+  </div>
+
+  <div class="form-group" [ngClass]="{'error': enviado && f['disfraz'].invalid}">
+    <label for="disfraz">Disfraz:</label>
+    <input id="disfraz" type="text" formControlName="disfraz" />
+    <div class="mensaje-error" *ngIf="enviado && f['disfraz'].invalid">
+      👻 Este campo da más miedo vacío, ¡rellénalo!
+    </div>
+  </div>
+
+  <div class="form-group" [ngClass]="{'error': enviado && f['fechaLlegada'].invalid}">
+    <label for="fechaLlegada">Fecha de llegada:</label>
+    <input id="fechaLlegada" type="date" formControlName="fechaLlegada" />
+    <div class="mensaje-error" *ngIf="enviado && f['fechaLlegada'].invalid">
+      👻 Este campo da más miedo vacío, ¡rellénalo!
+    </div>
+  </div>
+
+  <div class="form-group checkbox" [ngClass]="{'error': enviado && f['aceptaReglas'].invalid}">
+    <input id="aceptaReglas" type="checkbox" formControlName="aceptaReglas" />
+    <label for="aceptaReglas">Prometo no morder a los demás invitados</label>
+    <div class="mensaje-error" *ngIf="enviado && f['aceptaReglas'].invalid">
+      👻 Debes prometerlo… ¡o no hay entrada!
+    </div>
+  </div>
+
+  <button type="submit">Enviar inscripción</button>
+
+  <div class="mensaje-exito" *ngIf="mensajeExito">
+    {{ mensajeExito }}
+  </div>
+</form>
