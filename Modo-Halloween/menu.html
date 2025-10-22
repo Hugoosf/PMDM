@@ -1,0 +1,99 @@
+<mat-drawer-container class="example-container" autosize>
+
+
+  <mat-drawer #drawer mode="side" class="example-sidenav" [opened]="true">
+    <button mat-button [routerLink]="['/matatopos']" style="display: block; width: 100%; text-align: left;">Matatopos</button>
+    <button mat-button [routerLink]="['/contador']" style="display: block; width: 100%; text-align: left;">Contador</button>
+    <button mat-button [routerLink]="['/mario']" style="display: block; width: 100%; text-align: left;">Mario</button>
+    <button mat-button [routerLink]="['/personajes']" style="display: block; width: 100%; text-align: left;">Personajes</button>
+    <mat-slide-toggle (change)="toggleDarkMode($event)">Modo oscuro</mat-slide-toggle>
+  </mat-drawer>
+
+
+  <mat-drawer-content>
+    <mat-toolbar color="primary">
+    
+      <div class="moviles">
+        <button mat-icon-button (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+
+     
+      <div class="ordenadores">
+        <button mat-button [routerLink]="['/matatopos']">Matatopos</button>
+        <button mat-button [routerLink]="['/contador']">Contador</button>
+        <button mat-button [routerLink]="['/mario']">Mario</button>
+        <button mat-button [routerLink]="['/personajes']">Personajes</button>
+      </div>
+    </mat-toolbar>
+
+   
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
+<style>
+  .example-container {
+    height: 100vh;
+  }
+
+  .example-sidenav {
+    width: 250px;
+    padding: 10px;
+    background-color: #f0f0f0;
+  }
+
+  .main-content {
+    padding: 16px;
+  }
+
+  .moviles {
+    display: none;
+  }
+
+  .ordenadores {
+    display: flex;
+    gap: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .moviles {
+      display: flex;
+    }
+
+    .ordenadores {
+      display: none;
+    }
+  }
+
+  .dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dark-mode .example-sidenav {
+  background-color: #1e1e1e;
+}
+
+.dark-mode .main-content {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dark-mode button {
+  color: #ffffff;
+}
+
+.dark-mode mat-toolbar {
+  background-color: #1f1f1f !important;
+}
+
+
+
+</style>
+
+
